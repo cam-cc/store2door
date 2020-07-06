@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const PORT = process.env.PORT || 8080;
 // LOad environment variable file.
 require('dotenv').config({path:"./config/keys.env"});
 //handlebars
@@ -19,6 +20,6 @@ const generalController = require('./controllers/general');
 app.use("/",generalController);
 app.use("/register",registerController);
 
-app.listen(8080, () => {
-  console.log("Server connected at port", 8080);
+app.listen(PORT, () => {
+  console.log("Server connected");
 })

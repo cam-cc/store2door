@@ -1,10 +1,14 @@
-<form name="message" method="POST" action="logins" class="login-form">
+<form action="login/send" class="login-form">
+  <div class="errorContainer">
+    <ul class="error"></ul>
+  </div>
 <div class="login">
     <label for="username"><h1>Username</h1></label>
-      <input type="text" placeholder="Username" id="username">
+      <input type="text" placeholder="Username" id="username" name="name">
     <label for="password"><h1>Password</h1></label>
-  <input type="password" placeholder="password" id="password">
+  <input type="password" placeholder="password" id="password" name="password">
   <a href="#" class="forgot">forgot password?</a>
   <input type="submit" value="Sign In">
 </div>
 </form>
+<script type="text/javascript" src="/js/login.js"></script>
