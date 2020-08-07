@@ -25,11 +25,24 @@ router.post('/send',[
   .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, 'i')
   .withMessage('Password must include one lowercase character, one uppercase character, a number, and a special character.')
 ], (req,res) => {
-  const {name,email} = req.body;
+  const User = require('../lib/User');
+  const {name,email,password} = req.body;
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     res.status(422).json({ errors: errors.array() });
   }else if(errors.isEmpty()){
+    var newuser = new User();
+    newuser.email = email;
+    newuser.password = password;
+    newuser.name = name;
+    newuser.save((err, savedUser)=>{
+      if(err){
+        console.log(err);
+        return res.status(500).send();
+      } else {
+        return res.status(200).send();
+      }
+    })
     console.log(req.body);
 
     const sgMail = require('@sendgrid/mail');
