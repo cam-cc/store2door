@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+require('./helpers/init_mongodb')
 const PORT = process.env.PORT || 8080;
 // LOad environment variable file.
 require('dotenv').config({path:"./config/keys.env"});
