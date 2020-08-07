@@ -3,18 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const PORT = process.env.PORT || 8080;
-const mongoose = require('mongoose');
-//Mongoose Model
-const mongodb_uri = 'mongodb+srv://admin:root@projectcluster.cpmog.mongodb.net/store2door?retryWrites=true&w=majority'
-
-mongoose.connect(mongodb_uri || 'mongodb://localhost/cameron', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-mongoose.connection.on('connected',() =>{
-  console.log('Mongoose is connected')
-});
 // LOad environment variable file.
 require('dotenv').config({path:"./config/keys.env"});
 //handlebars
