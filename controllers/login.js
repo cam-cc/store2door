@@ -9,12 +9,9 @@ router.get('/success',(req, res) => {
   res.render('products');
 });
 router.post('/send',[
-  check('name')
-  .exists()
-  .isAlpha()
-  .withMessage('Name must be only alphaNumeric')
-  .isLength({min: 3})
-  .withMessage('Name must be atleast 3 characters.'),
+  check('email')
+  .isEmail()
+  .withMessage('Email is not a valid Email address'),
   check('password')
   .exists()
   .isLength({ min: 8 })
@@ -22,24 +19,39 @@ router.post('/send',[
   .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, 'i')
   .withMessage('Password must include one lowercase character, one uppercase character, a number, and a special character.')
 ], (req,res) => {
-  const User = require('../lib/User');
-  const {name,email,password} = req.body;
+  const {email,password} = req.body;
+  const isClerk = false;
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     res.status(422).json({ errors: errors.array() });
+  } else {
+    const User = require('../lib/User');
+    User.findOne({email: email}, (err,user)=>{
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+      }
+      if(!user){
+        return res.status(401).json({
+              success: 'fail'
+        })
+      }
+      console.log(user.isClerk);
+      user.comparePassword(password, (err, isMatch)=>{
+        if(isMatch && isMatch == true){
+          return res.status(202).json({
+                success: 'Sent',
+                email: email,
+                isClerk: user.isClerk
+          })
+        }else{
+          return res.status(401).json({
+                success: 'fail'
+          })
+        }
+      })
+      req.session.user = {user: user, email: email, isClerk: isClerk};
+    })
   }
-  User.findOne({email:email, password:password}, (err,user)=>{
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-    }
-    if(!user){
-      return res.status(404).send()
-    }
-  })
-  res.status(202).json({
-        success: 'Sent'
-  })
-
 });
 module.exports = router;

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const session = require('express-session')
+
 require('./helpers/init_mongodb')
 const PORT = process.env.PORT || 8080;
 // LOad environment variable file.
@@ -13,6 +15,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
+app.use(session({secret:process.env.SECRET_HASH,resave:false,saveUninitialized:true}))
 
 //Load controllers
 const registerController = require('./controllers/register');
@@ -21,7 +24,7 @@ const loginController = require('./controllers/login');
 //map controllers
 app.use("/",generalController);
 app.use("/register",registerController);
-app.use("/login",registerController);
+app.use("/login",loginController);
 
 app.listen(PORT, () => {
   console.log("Server connected");

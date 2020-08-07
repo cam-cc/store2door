@@ -15,9 +15,23 @@ _<!DOCTYPE html>
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/products">Products</a></li>
+  {{#if user}}
+    <div class="user_action">
+    <ul>
+      <li id="logged_user">{{user.email}}</li>
+      <li id="logout-lst"><a href="/logout">logout</a></li>
+    </ul>
+    </div>
+  {{else}}
     <li><a href="/login">Login</a></li>
     <li><a href="/register/home">Register</a></li>
   </ul>
+      <div class="user_action">
+      <ul>
+        <li id="logged_user">Make an account</li>
+      </ul>
+      </div>
+  {{/if}}
 </header>
   </head>
   <body>

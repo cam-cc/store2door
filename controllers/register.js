@@ -3,7 +3,9 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
 router.get('/home',(req, res) => {
-  res.render('register');
+  res.render('register', {
+    user : req.session.user
+  });
 })
 router.get('/sent',(req, res) => {
   res.render('email');
@@ -12,7 +14,7 @@ router.post('/send',[
   check('name')
   .exists()
   .isAlpha()
-  .withMessage('Name must be only alphaNumeric')
+  .withMessage('Email must be only alphaNumeric')
   .isLength({min: 3})
   .withMessage('Name must be atleast 3 characters.'),
   check('email')
@@ -58,7 +60,7 @@ router.post('/send',[
         <li> Name: ${name} </li>
         <li> Email: ${email} </li>
       </ul>
-        <h3> Thank you! 🙂 </h3>`,
+        <h3> Thank you! 🙂  You may now login to your account! </h3>`,
     };
     sgMail.send(msg)
     .then(()=>{

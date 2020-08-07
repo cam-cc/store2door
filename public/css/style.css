@@ -276,7 +276,7 @@ label{
   height: 33px;
   text-align: center;
 }
-input[type="password"], input[type="text"] {
+input[type="password"], input[type="email"], input[type="text"] {
   border: 1px solid #595959;
   border-radius: 4px;
   color: #696969;
@@ -327,4 +327,7 @@ input[type="submit"] {
     color: #E03D3D;
     font-size: 1em;
     list-style-type: none;
+}
+#logout-lst{
+  padding-left: 80%;
 }
