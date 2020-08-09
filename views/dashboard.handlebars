@@ -1,0 +1,32 @@
+<div class="card-container">
+         <div class="upper-container">
+            <div class="image-container">
+               <img src="../images/snap.png" />
+            </div>
+         </div>
+         <div class="lower-container">
+            <div>
+               <h3>{{user.email}}</h3>
+               {{#if user.isClerk}}
+                 <h4>Clerk</h4>
+               {{else}}
+                 <h4>User</h4>
+               {{/if}}
+            </div>
+            <p><b><h2><i class="fas fa-asterisk"></i></b>Permissions</h2></p>
+            <div class="permissions">
+              <div class="">
+                {{#if user.isClerk}}
+                  <p><i class="fas fa-edit"></i> Edit Meal Plans</p>
+                  <p><i class="fas fa-plus"></i> Add Meal Plans</p>
+                {{else}}
+                  <p><i class="fas fa-cart-arrow-down"></i> Online Shopping</p>
+                {{/if}}
+                <p><i class="fas fa-edit"></i> Edit Account</p>
+              </div>
+            </div>
+            <div>
+               <a href="#" class="btn">View profile</a>
+            </div>
+         </div>
+      </div>

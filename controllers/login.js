@@ -50,7 +50,7 @@ router.post('/send',[
           })
         }
       })
-      req.session.user = {user: user, email: email, isClerk: isClerk};
+      req.session.user = {user: user, email: email, isClerk: user.isClerk};
     })
   }
 });

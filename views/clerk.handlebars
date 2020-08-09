@@ -1,0 +1,42 @@
+<form action="/meals/add" class="create-meal-form">
+<div class="create-meal">
+  <div class="errorContainer">
+    <ul class="error"></ul>
+  </div>
+        <h1> Create Meal Packages </h1>
+    <div class="flex-container">
+      <div class="item">
+        <label for="name"><h3>Name</h3></label>
+        <input id="name" type="text" name="name" placeholder="Meal package name">
+      </div>
+      <div class="item">
+        <label for="price"><h3>Price</h3></label>
+        <input id="price" type="number" name="price" placeholder="Meal package price">
+      </div>
+      <div class="item">
+        <label for="desc"><h3>description</h3></label>
+        <input id="desc" type="text" name="desc" placeholder="Meal package description">
+      </div>
+      <div class="item">
+        <label for="category"><h3>category</h3></label>
+        <input id="category" type="text" name="category" placeholder="Meal package category">
+      </div>
+      <div class="item">
+        <label for="qty"><h3>quantity</h3></label>
+        <input id="qty" type="number" name="qty" placeholder="Meal package quantity">
+      </div>
+      <div class="item">
+        <label for="special"><h3>Special package</h3></label>
+        <input id="special" type="radio" name="special">
+      </div>
+      <div class="item">
+        <label for="photo"><h3>Upload Photo</h3></label>
+        <input id="photo" type="text" name="photo">
+      </div>
+      <div class="item">
+        <input type="submit" value="Add Meal">
+      </div>
+    </div>
+</div>
+</form>
+<script type="text/javascript" src="/js/clerk.js"></script>

@@ -1,42 +1,36 @@
-let form = document.querySelector(".login-form");
+let mealForm = document.querySelector(".create-meal-form");
 
-form.addEventListener("submit", sendData);
+mealForm.addEventListener("submit", sendData);
 
 function sendData(e){
   e.preventDefault();
 
-  let formData = new FormData(form);
+  let formData = new FormData(mealForm);
 
   let Params = {
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: formData.get('email'),
-      password: formData.get('password'),
+      name: formData.get('name'),
+      price: formData.get('price'),
+      desc: formData.get('desc'),
+      category: formData.get('category'),
+      qty: formData.get('qty'),
+      special: formData.get('special')
     }),
     method: "POST"
   }
 
-  fetch('http://localhost:8080/login/send', Params)
+  fetch('http://localhost:8080/meals/add', Params)
   .then(response => response.json())
   .then(data => {
     if(data.success === "Sent"){
       let error = document.querySelector('.error');
       error.innerHTML = "";
       document.querySelector('.errorContainer').style.display = "none";
-      if (data.isClerk === false) {
-        window.location.href = "http://localhost:8080/dashboard";
-      } else {
-        window.location.href = "http://localhost:8080/clerkdashboard";
-      }
-    }else if(data.success === "fail"){
-      let error = document.querySelector('.error');
-      error.innerHTML = "";
-      document.querySelector('.errorContainer').style.display = "block";
-      error.innerHTML += `<li> Invalid email Or Password</li>`;
+      window.location.href = "http://localhost:8080/products";
     }else{
-
     let error = document.querySelector('.error');
     error.innerHTML = "";
     document.querySelector('.errorContainer').style.display = "block";

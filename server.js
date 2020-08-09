@@ -21,10 +21,12 @@ app.use(session({secret:process.env.SECRET_HASH,resave:false,saveUninitialized:t
 const registerController = require('./controllers/register');
 const generalController = require('./controllers/general');
 const loginController = require('./controllers/login');
+const mealController = require('./controllers/meals');
 //map controllers
 app.use("/",generalController);
 app.use("/register",registerController);
 app.use("/login",loginController);
+app.use("/meals",mealController);
 
 app.listen(PORT, () => {
   console.log("Server connected");

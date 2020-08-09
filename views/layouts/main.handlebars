@@ -5,6 +5,7 @@ _<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" type="text/css"   href="/css/style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <header class ="navigation">
   <nav id="page-nav">
   <!-- [THE HAMBURGER] -->
@@ -16,6 +17,14 @@ _<!DOCTYPE html>
     <li><a href="/">Home</a></li>
     <li><a href="/products">Products</a></li>
   {{#if user}}
+    {{#if user.isClerk}}
+          <li><a href="/clerkdashboard">dashboard</a></li>
+          <li><a href="/meals/create">add Item</a></li>
+        </ul>
+      {{else}}
+        <li><a href="/dashboard">dashboard</a></li>
+        </ul>
+    {{/if}}
     <div class="user_action">
     <ul>
       <li id="logged_user">{{user.email}}</li>
