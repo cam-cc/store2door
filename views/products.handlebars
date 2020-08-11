@@ -4,11 +4,13 @@
 <div class="grid-container-items">
   {{#each meal}}
         <div class="card">
-         <img src="../images/veggie.png" alt="Denim Jeans" width="250em" height="250em" style="width:100%">
+         <img src="{{this.image}}" alt="Denim Jeans" width="250em" height="250em" style="width:100%">
          <h3>{{this.name}}</h3>
          <p class="price">${{this.price}}.00</p>
          <p>{{this.desc}}</p>
-         <p><button>Add to Cart</button></p>
+         <div>
+               <a href="/meals/add-to-cart/{{this._id}}" class="cambtn">Add to Cart</a>
+          </div>
         </div>
   {{/each}}
   </div>

@@ -1,26 +1,28 @@
-let registerForm = document.querySelector("#register-form");
+let form = document.querySelector("#create-meal-form");
 
-registerForm.addEventListener("submit", sendData);
+form.addEventListener("submit", sendData);
 
 function sendData(e){
   e.preventDefault();
 
-  let formData = new FormData(registerForm);
+  let formData = new FormData(form);
 
   let Params = {
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      password: formData.get('password'),
-      image: formData.get('image')
+      name : formData.get('name'),
+      price : formData.get('price'),
+      desc : formData.get('desc'),
+      category : formData.get('category'),
+      qty : formData.get('qty;'),
+      image : formData.get('image')
     }),
     method: "POST"
   }
 
-  fetch('http://localhost:8080/register/send', Params)
+  fetch('http://localhost:8080/meals/add', Params)
   .then(response => response.json())
   .then(data => {
     if(data.success === "Sent"){
@@ -28,8 +30,7 @@ function sendData(e){
       error.innerHTML = "";
       document.querySelector('.errorContainer').style.display = "none";
       window.location.href = "http://localhost:8080/products";
-    }else{
-
+    }else if(data.success === "fail"){
     let error = document.querySelector('.error');
     error.innerHTML = "";
     document.querySelector('.errorContainer').style.display = "block";

@@ -1,20 +1,22 @@
 const express = require('express')
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-
 router.get('/home',(req, res) => {
   res.render('register', {
     user : req.session.user
   });
 })
 router.get('/sent',(req, res) => {
-  res.render('email');
+  res.render('email', {
+    user : req.session.user,
+    cart : req.session.cart
+  });
 })
 router.post('/send',[
   check('name')
   .exists()
   .isAlpha()
-  .withMessage('Email must be only alphaNumeric')
+  .withMessage('Name must be only alphaNumeric')
   .isLength({min: 3})
   .withMessage('Name must be atleast 3 characters.'),
   check('email')
@@ -28,7 +30,7 @@ router.post('/send',[
   .withMessage('Password must include one lowercase character, one uppercase character, a number, and a special character.')
 ], (req,res) => {
   const User = require('../lib/User');
-  const {name,email,password} = req.body;
+  const {name,email,password,image} = req.body;
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     res.status(422).json({ errors: errors.array() });
@@ -37,6 +39,7 @@ router.post('/send',[
     newuser.email = email;
     newuser.password = password;
     newuser.name = name;
+    newuser.image = image;
     newuser.save((err, savedUser)=>{
       if(err){
         console.log(err);

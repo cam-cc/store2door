@@ -1,10 +1,11 @@
-_<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" type="text/css"   href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <header class ="navigation">
   <nav id="page-nav">
@@ -14,30 +15,33 @@ _<!DOCTYPE html>
 
   <!-- [MENU ITEMS] -->
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/products">Products</a></li>
+    <li><a href="/"><i class="far fa-home"></i>Home</a></li>
+    <li><a href="/products"><i class="fas fa-utensils"></i> Products</a></li>
   {{#if user}}
     {{#if user.isClerk}}
-          <li><a href="/clerkdashboard">dashboard</a></li>
-          <li><a href="/meals/create">add Item</a></li>
+          <li><a href="/clerkdashboard"><i class="far fa-address-card"></i> dashboard</a></li>
+          <li><a href="/meals/create"><i class="fas fa-plus"></i> add Item</a></li>
+          <li><a href="/cart/shopping-cart"><i class="fa fa-shopping-cart"></i> Shopping cart</a></li>
+          <span class="badge">{{session}}</span>
         </ul>
       {{else}}
-        <li><a href="/dashboard">dashboard</a></li>
+        <li><a href="/dashboard"><i class="far fa-address-card"></i> </i>dashboard</a></li>
+        <li><a href="/cart/shopping-cart"><i class="fa fa-shopping-cart"></i> Shopping cart</a></li>
         </ul>
     {{/if}}
     <div class="user_action">
     <ul>
-      <li id="logged_user">{{user.email}}</li>
-      <li id="logout-lst"><a href="/logout">logout</a></li>
+      <li id="logged_user"><i class="fas fa-user-lock" name="current_user">     {{user.email}}</i></li>
+      <li id="logout-lst"><a href="/logout"><i class="fas fa-sign-out-alt"></i>logout</a></li>
     </ul>
     </div>
   {{else}}
-    <li><a href="/login">Login</a></li>
+    <li><a href="/login"><i class="fas fa-user-lock"></i>Login</a></li>
     <li><a href="/register/home">Register</a></li>
   </ul>
       <div class="user_action">
       <ul>
-        <li id="logged_user">Make an account</li>
+        <li id="logged_user"><i class="far fa-user-circle"></i>Make an account</li>
       </ul>
       </div>
   {{/if}}

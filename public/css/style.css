@@ -35,22 +35,15 @@
 .threeD{
         color: rgb(219, 219, 219);
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         font-size: 7em;
         text-align: center;
         font-family: sans-serif;
-        letter-spacing: 0.1em;
         transition: 0.3s;
-        text-shadow: 1px 1px 0 grey, 1px 2px 0 grey, 1px 3px 0 grey, 1px 4px 0 grey,
-          1px 5px 0 grey, 1px 6px 0 grey, 1px 7px 0 grey, 1px 8px 0 grey,
-          5px 13px 15px black;
       }
 
 .threeD:hover {
         transition: 0.3s;
-        transform: scale(1.1)translate(-50%, -50%);
+        transform: scale(0.5)translate(-1%, -1%);
         text-shadow: 1px -1px 0 grey, 1px -2px 0 grey, 1px -3px 0 grey,
           1px -4px 0 grey, 1px -5px 0 grey, 1px -6px 0 grey, 1px -7px 0 grey,
           1px -8px 0 grey, 5px -13px 15px black, 5px -13px 25px #808080;
@@ -243,6 +236,7 @@ footer{
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
+  height: 33em;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -251,22 +245,6 @@ footer{
 .price {
   color: grey;
   font-size: 22px;
-}
-
-.card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #1aaafb;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-.card button:hover {
-  opacity: 0.7;
 }
 .grid-container-choices {
   display: grid;
@@ -392,9 +370,10 @@ input[type="submit"] {
 }
 .card-container{
   width: 300px;
-  height: 530px;
+  height: 600px;
   background: #FFF;
   margin: auto;
+  margin-top: 10px;
   border-radius: 6px;
   box-shadow: 0px 1px 10px 1px #000;
   overflow: hidden;
@@ -438,7 +417,7 @@ input[type="submit"] {
   color: gray;
   margin-bottom: 30px;
 }
-.lower-container .btn{
+.cambtn{
   padding: 12px 20px;
   background: #7F00FF;
   border: none;
@@ -449,8 +428,25 @@ input[type="submit"] {
   font-weight: bold;
   transition: all .3s ease-in;
 }
-.lower-container .btn:hover{
+.cambtn:hover{
   background: transparent;
   color: #7F00FF;
   border: 2px solid #7F00FF;
+}
+.cart{
+  width: 100%;
+  right: 0px;
+}
+.products{
+  margin-top: 1%;
+}
+.register{
+  margin: auto;
+  padding: auto;
+  width: 30%;
+}
+.login{
+  margin: auto;
+  padding: auto;
+  width: 30%;
 }

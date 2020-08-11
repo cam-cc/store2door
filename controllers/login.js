@@ -42,7 +42,8 @@ router.post('/send',[
           return res.status(202).json({
                 success: 'Sent',
                 email: email,
-                isClerk: user.isClerk
+                isClerk: user.isClerk,
+                image : user.image
           })
         }else{
           return res.status(401).json({
@@ -50,7 +51,7 @@ router.post('/send',[
           })
         }
       })
-      req.session.user = {user: user, email: email, isClerk: user.isClerk};
+      req.session.user = {user: user, email: email, isClerk: user.isClerk, image : user.image};
     })
   }
 });
