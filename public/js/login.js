@@ -18,7 +18,7 @@ function sendData(e){
     method: "POST"
   }
 
-  fetch('http://localhost:8080/login/send', Params)
+  fetch('https://storedoor.herokuapp.com/login/send', Params)
   .then(response => response.json())
   .then(data => {
     if(data.success === "Sent"){
@@ -26,9 +26,9 @@ function sendData(e){
       error.innerHTML = "";
       document.querySelector('.errorContainer').style.display = "none";
       if (data.isClerk === false) {
-        window.location.href = "http://localhost:8080/dashboard";
+        window.location.href = "https://storedoor.herokuapp.com/dashboard";
       } else {
-        window.location.href = "http://localhost:8080/clerkdashboard";
+        window.location.href = "https://storedoor.herokuapp.com/clerkdashboard";
       }
     }else if(data.success === "fail"){
       let error = document.querySelector('.error');

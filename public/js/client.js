@@ -20,14 +20,14 @@ function sendData(e){
     method: "POST"
   }
 
-  fetch('http://localhost:8080/register/send', Params)
+  fetch('https://storedoor.herokuapp.com/register/send', Params)
   .then(response => response.json())
   .then(data => {
     if(data.success === "Sent"){
       let error = document.querySelector('.error');
       error.innerHTML = "";
       document.querySelector('.errorContainer').style.display = "none";
-      window.location.href = "http://localhost:8080/products";
+      window.location.href = "https://storedoor.herokuapp.com/products";
     }else{
 
     let error = document.querySelector('.error');
